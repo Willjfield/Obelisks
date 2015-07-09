@@ -1,0 +1,317 @@
+{
+    "accessors": {
+        "accessor_21": {
+            "bufferView": "bufferView_29",
+            "byteOffset": 0,
+            "byteStride": 0,
+            "componentType": 5123,
+            "count": 149508,
+            "type": "SCALAR"
+        },
+        "accessor_23": {
+            "bufferView": "bufferView_30",
+            "byteOffset": 0,
+            "byteStride": 12,
+            "componentType": 5126,
+            "count": 36720,
+            "max": [
+                370.093,
+                521.577,
+                3997.5
+            ],
+            "min": [
+                -261.173,
+                -921.408,
+                3206.6
+            ],
+            "type": "VEC3"
+        },
+        "accessor_25": {
+            "bufferView": "bufferView_30",
+            "byteOffset": 440640,
+            "byteStride": 12,
+            "componentType": 5126,
+            "count": 36720,
+            "max": [
+                0.999906,
+                0.999875,
+                0.999969
+            ],
+            "min": [
+                -0.999906,
+                -0.999969,
+                -0.999719
+            ],
+            "type": "VEC3"
+        },
+        "accessor_27": {
+            "bufferView": "bufferView_30",
+            "byteOffset": 881280,
+            "byteStride": 8,
+            "componentType": 5126,
+            "count": 36720,
+            "max": [
+                0.99583,
+                0.996094
+            ],
+            "min": [
+                0.003262,
+                0.000400007
+            ],
+            "type": "VEC2"
+        }
+    },
+    "animations": {},
+    "asset": {
+        "generator": "collada2gltf@df4892809111a8c6dbff4fab6c386a24745d344e",
+        "premultipliedAlpha": true,
+        "profile": "WebGL 1.0.2",
+        "version": 0.8
+    },
+    "bufferViews": {
+        "bufferView_29": {
+            "buffer": "Ob21",
+            "byteLength": 299016,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        "bufferView_30": {
+            "buffer": "Ob21",
+            "byteLength": 1175040,
+            "byteOffset": 299016,
+            "target": 34962
+        }
+    },
+    "buffers": {
+        "Ob21": {
+            "byteLength": 1474056,
+            "type": "arraybuffer",
+            "uri": "Ob21.bin"
+        }
+    },
+    "images": {
+        "ID5": {
+            "uri": "Ob21/tex/TC_Obelisk.jpg"
+        }
+    },
+    "materials": {
+        "ID4": {
+            "instanceTechnique": {
+                "technique": "technique1",
+                "values": {
+                    "diffuse": "texture_ID5",
+                    "shininess": 64,
+                    "specular": [
+                        0.2,
+                        0.2,
+                        0.2,
+                        1
+                    ]
+                }
+            },
+            "name": "TC_Obelisk"
+        }
+    },
+    "meshes": {
+        "ID11": {
+            "name": "ID11",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": "accessor_25",
+                        "POSITION": "accessor_23",
+                        "TEXCOORD_0": "accessor_27"
+                    },
+                    "indices": "accessor_21",
+                    "material": "ID4",
+                    "primitive": 4
+                }
+            ]
+        }
+    },
+    "nodes": {
+        "ID10": {
+            "children": [],
+            "matrix": [
+                0.973257,
+                -0.22972,
+                -2.19049e-06,
+                0,
+                -0.212317,
+                -0.899522,
+                -0.381813,
+                0,
+                0.0877082,
+                0.371603,
+                -0.924239,
+                0,
+                -255.863,
+                -884.8,
+                3353.99,
+                1
+            ],
+            "meshes": [
+                "ID11"
+            ],
+            "name": "Object"
+        },
+        "ID9": {
+            "children": [
+                "ID10"
+            ],
+            "matrix": [
+                0.3,
+                0,
+                0,
+                0,
+                0,
+                0.299925,
+                -0.00671716,
+                0,
+                0,
+                0.00671716,
+                0.299925,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "name": "Null"
+        }
+    },
+    "programs": {
+        "program_0": {
+            "attributes": [
+                "a_normal",
+                "a_position",
+                "a_texcoord0"
+            ],
+            "fragmentShader": "Ob210FS",
+            "vertexShader": "Ob210VS"
+        }
+    },
+    "samplers": {
+        "sampler_0": {
+            "magFilter": 9729,
+            "minFilter": 9729,
+            "wrapS": 10497,
+            "wrapT": 10497
+        }
+    },
+    "scene": "defaultScene",
+    "scenes": {
+        "defaultScene": {
+            "nodes": [
+                "ID9"
+            ]
+        }
+    },
+    "shaders": {
+        "Ob210FS": {
+            "type": 35632,
+            "uri": "Ob210FS.glsl"
+        },
+        "Ob210VS": {
+            "type": 35633,
+            "uri": "Ob210VS.glsl"
+        }
+    },
+    "skins": {},
+    "techniques": {
+        "technique1": {
+            "parameters": {
+                "diffuse": {
+                    "type": 35678
+                },
+                "modelViewMatrix": {
+                    "semantic": "MODELVIEW",
+                    "type": 35676
+                },
+                "normal": {
+                    "semantic": "NORMAL",
+                    "type": 35665
+                },
+                "normalMatrix": {
+                    "semantic": "MODELVIEWINVERSETRANSPOSE",
+                    "type": 35675
+                },
+                "position": {
+                    "semantic": "POSITION",
+                    "type": 35665
+                },
+                "projectionMatrix": {
+                    "semantic": "PROJECTION",
+                    "type": 35676
+                },
+                "shininess": {
+                    "type": 5126
+                },
+                "specular": {
+                    "type": 35666
+                },
+                "texcoord0": {
+                    "semantic": "TEXCOORD_0",
+                    "type": 35664
+                }
+            },
+            "pass": "defaultPass",
+            "passes": {
+                "defaultPass": {
+                    "details": {
+                        "commonProfile": {
+                            "extras": {
+                                "doubleSided": false
+                            },
+                            "lightingModel": "Blinn",
+                            "parameters": [
+                                "diffuse",
+                                "modelViewMatrix",
+                                "normalMatrix",
+                                "projectionMatrix",
+                                "shininess",
+                                "specular"
+                            ],
+                            "texcoordBindings": {
+                                "diffuse": "TEXCOORD_0"
+                            }
+                        },
+                        "type": "COLLADA-1.4.1/commonProfile"
+                    },
+                    "instanceProgram": {
+                        "attributes": {
+                            "a_normal": "normal",
+                            "a_position": "position",
+                            "a_texcoord0": "texcoord0"
+                        },
+                        "program": "program_0",
+                        "uniforms": {
+                            "u_diffuse": "diffuse",
+                            "u_modelViewMatrix": "modelViewMatrix",
+                            "u_normalMatrix": "normalMatrix",
+                            "u_projectionMatrix": "projectionMatrix",
+                            "u_shininess": "shininess",
+                            "u_specular": "specular"
+                        }
+                    },
+                    "states": {
+                        "enable": [
+                            2884,
+                            2929
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "textures": {
+        "texture_ID5": {
+            "format": 6408,
+            "internalFormat": 6408,
+            "sampler": "sampler_0",
+            "source": "ID5",
+            "target": 3553,
+            "type": 5121
+        }
+    }
+}

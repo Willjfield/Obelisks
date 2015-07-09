@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Info Window</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Merriweather:700" rel="stylesheet" type="text/css">
+    <!--CSS-->
+<style>
+body {
+}
+
+.infowin {
+    width: 320px;
+    padding: 7px;
+    border: solid;
+    border-color: #b3b3b3;
+    border-width: 1px;
+    box-shadow: 1px 1px 3px #c3c3c3;
+}
+
+.city {
+	width: 320px;
+	font-family: Merriweather;
+	font-weight: bold;
+	font-size: 36px;
+	color: #686868;
+}
+
+.basic {
+	width: 320px;
+	height: 16px;
+	font-family: Roboto;
+	font-weight: bold;
+	font-size: 15px;
+	color: #686868;
+}
+
+#description {
+	width: 320px;
+	font-family: Roboto;
+	font-size: 15px;
+	line-height: 22px;
+	color: #686868;
+}
+
+.caption {
+	font-family: Roboto;
+	font-size: 13px;
+	font-style: italic;
+	color: #b3b3b3;
+}
+
+
+#yearErected{
+	font-family: Roboto;
+	font-size: 15px;
+	color: #686868;
+}
+
+#station{
+	font-family: Roboto;
+	font-size: 15px;
+	color: #686868;
+}
+
+#dist{
+	font-family: Roboto;
+	font-size: 15px;
+	color: #686868;
+}
+
+#totalYears{
+	font-family: Roboto;
+	font-size: 15px;
+	color: #686868;
+}
+
+#commissionedBy{
+	font-family: Roboto;
+	font-size: 15px;
+	color: #686868;
+}
+#close{
+  position:absolute;
+  z-index:999;
+  left:-1%;
+  top:-1%;
+  padding:3px;
+  font-family: Helvetica;
+  font-size: 10px;
+  background:rgba(255,255,255,1);
+}
+
+img {
+	width: 100%;
+	padding-top: 10px;
+
+}
+
+
+</style>
+    <!--Load jquery:-->
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="scripts/dragiframe.js"></script>
+
+<!--START-->
+
+  </head>
+	<body onLoad="addHandle(document.getElementsByTagName('body').item(0), window);">
+
+	<div class="infowin">
+    <input id="close" type="submit" value="X">
+		<div class="city" id="step">Rome</div>
+		<hr>
+		<div class="basic"> Date erected: <l id="yearErected">1527</l> </div>
+		<hr>
+		<div class="basic"> Obelisk ID #: <l id="station">3</l> </div>
+		<hr>
+		<div class="basic"> Years of travel thus far: <l id="totalYears"> 345</l> </div>
+		<hr>
+		<div class="basic"> Distance from previous location: <l id="dist">Caesar</l> </div>
+		<hr>
+		<div class="basic"> Commissioned by: <l id="commissionedBy">Caesar</l> </div>
+		<hr>
+		<div id="description"> Originally erected on the eastern flank of the Mausoleum of Augustus, paired with the Esquiline obelisk. Found in 1527. Erected by Pope Pius VI in 1786 on the Quirinal Hill next to statues of the Dioscuri (called the 'Horse Tamers') from the Baths of Constantine. </div>
+		<img id="picture"></img>
+		<div class="caption"> </div>
+		<div class="buttons"> </div>
+	</div>
+</body>
+	<script>
+//make a variable that will hold the data once it's loaded:
+
+$("#close").click(function(){
+parent.closeIFrame();
+});
+
+function toRad(value) {
+
+	return value * Math.PI / 180;
+
+};
+
+function distanceBetween(p1, p2) {
+
+	var R = 3958.7558657440545; // Radius of earth in Miles
+	var dLat = toRad(p2[0] - p1[0]);
+	var dLon = toRad(p2[1] - p1[1]);
+	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+		Math.cos(toRad(p1[0])) * Math.cos(toRad(p2[0])) *
+		Math.sin(dLon / 2) * Math.sin(dLon / 2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	var d = R * c;
+
+	return d * 1.609344;
+};
+
+<!-- distance till here -->
+
+var data;
+var obid = sessionStorage.obid;
+var step = sessionStorage.step;
+
+
+//use jquery to store the entire geojson file as an object called "data"
+$.getJSON('https://gist.githubusercontent.com/dashalom/9871c40cd6a86918e2f4/raw/bfa10d76ddaa93c192bc446a9363c614c26ac41a/gistfile1.geojson', function(geoJ) {
+		data = geoJ;
+		//console.log(data);
+		//set the obelisk's id to 21 (this is the new york one), we can dynamically change this later but it might be easier while developing to work with one
+		var cityName;
+		var year;
+		var stop = step + 1;
+		var yrbuilt;
+		var sum;
+		var commissioned;
+		var distance;
+		var des;
+		var pic;
+
+		//for each item in the data's "features" field
+		for (var i in data.features){
+		  //look through the feature's properties and see if the id matches the obid we set
+		  if (data.features[i].properties.id == obid){
+		  	cityName= data.features[i].properties.city[step];
+		  	year= data.features[i].properties.year_aquired[step];
+			yrbuilt= data.features[i].properties.year_aquired[0];
+			des= data.features[i].properties.text[step];
+			sum= year-yrbuilt;
+			commissioned = data.features[i].properties.commission;
+			//console.log(data.features[i].geometry.coordinates[step]);
+			if(step>0){
+			distance= Math.round(distanceBetween(data.features[i].geometry.coordinates[step], data.features[i].geometry.coordinates[step-1]));
+			}else{
+				distance=0;
+			}
+			pic=data.features[i].properties.image_url[0];
+			//console.log(pic);
+
+		  /*
+		  here is how you can look at all the properties for that obelisk, inside this if statement/for loop:
+		  data.features[i].properties.origin - where the obelisk was built
+		  data.features[i].properties.commission - who it was commissioned for
+		  data.features[i].properties.height - height
+		  data.features[i].properties.weight - weight
+		  data.features[i].properties.city[step] - an array of each city the obelisk has been in, in chronological order. Obelisk 21 went from Heliopolis to Alexandria to New York so this property is an array that equals ['Heliopolis','Alexandria','New York']
+
+		  There are more properties that you can find if you look in the geojson. If you want to add more from the csv into the geojson, feel free!
+		  */
+		  //...look through each set of coordinates in that feature's geometry
+		    for(var j in data.features[i].geometry.coordinates){
+		        //create an array called icoords
+		       var icoords = [];
+		       //put each number inside each coordinate into an array
+		       icoords.push(data.features[i].geometry.coordinates[j][0]);
+		       icoords.push(data.features[i].geometry.coordinates[j][1]);
+		       //you now have a 2 item array with one of the positions for obelisk 21, you can use it to do whatever you want like create a circle or marker
+		      }
+		    }
+		  }
+		  $("#step").replaceWith("<div class='city' id='step'>"+cityName+"</div>");
+		  $("#yearErected").replaceWith("<l id='yearErected'>"+year+"</l>");
+		  $("#station").replaceWith("<l id='station'>"+obid+"</l>");
+		  $("#totalYears").replaceWith("<l id='totalYears'>"+sum+"</l>");
+		  $("#commissionedBy").replaceWith("<l id='commissionedBy'>"+commissioned+"</l>");
+		  $("#dist").replaceWith("<l id='dist'>"+distance+" km</l>");
+		  $("#description").replaceWith("<id class='description'>"+des+"</l>");
+		  $("#picture").replaceWith("<img id='#picture' src="+pic+"></img>");
+});
+
+
+</script>
