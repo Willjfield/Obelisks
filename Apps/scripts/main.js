@@ -7,7 +7,25 @@ var enteredObs = ['17','19','20','21'];
 var closeIFrame = function() {
    $('#information').hide();
  }
+var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 
+ if( width>600 && height>600 ) {
+    console.log("not mobile!");
+    $("#notMobile").hide();
+ }
+
+window.onresize = function() {
+  var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+   if( width<600 || height<600 ) {
+      console.log("mobile!");
+      $("#notMobile").show();
+   }else{
+     console.log("not mobile!");
+     $("#notMobile").hide();
+   }
+};
 
 $.getJSON(dataURL, function(geoJ) {
   //JQuery functions to interact with html
