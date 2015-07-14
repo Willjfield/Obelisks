@@ -10,7 +10,7 @@ var closeIFrame = function() {
 var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 
- if( width>600 && height>600 ) {
+ if( width>600 && height>500 ) {
     console.log("not mobile!");
     $("#notMobile").hide();
  }
@@ -18,7 +18,7 @@ var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 window.onresize = function() {
   var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
   var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
-   if( width<600 || height<600 ) {
+   if( width<600 || height<500 ) {
       console.log("mobile!");
       $("#notMobile").show();
    }else{
