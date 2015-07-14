@@ -114,7 +114,7 @@ $.getJSON(dataURL, function(geoJ) {
       fill: Cesium.Color.BLACK,
       strokeWidth: 3,
       markerSize: 16,
-      markerSymbol: ' '
+      markerSymbol: '+'
     }));
     //create scene
     var scene = viewer.scene;
