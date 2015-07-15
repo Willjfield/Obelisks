@@ -2,7 +2,7 @@
 
 Ancient Egyptians created dozens of obelisks, mostly to commemorate pharaohs. Many of these obelisks were brought to Rome under Augustus and several of the following Roman Emperors who ruled over Egypt. More recent European colonial powers brought additional obelisks to France, Britain and the United States in the 19th century. 
 
-As a final project for Sebastian Heath's Spring 2015 Mapping and Data Vizualization of the Ancient World class, at The Institute for Studies of the Ancient World, NYU, I created an interactive spatial and temporal map tracking the stories of the obelisks. The map is accompanied by pop-up windows designed and coded by Dalit Shalom.
+As a final project for [Sebastian Heath](http://sebastianheath.com/)'s Spring 2015 Mapping and Data Vizualization of the Ancient World class, at The Institute for Studies of the Ancient World, NYU, I created an interactive spatial and temporal map tracking the stories of the obelisks. The map is accompanied by pop-up windows designed and coded by [Dalit Shalom](http://dalitshalom.com/).
 
 The live website can be found [here](http://www.willjfield.com/Obs/Apps/).
 
