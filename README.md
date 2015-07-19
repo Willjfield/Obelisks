@@ -8,7 +8,7 @@ The live website can be found [here](http://www.willjfield.com/Obs/Apps/).
 
 Main sources for our data include:
 
-http://okamoto-shoji.jp/obelisk.htm
+Shoji Okamoto. Obelisk of the World. http://okamoto-shoji.jp/obelisk.htm
 
 Sorek, Susan. The Emperors' Needles: Egyptian Obelisks and Rome. Liverpool University Press, 2010. Stable URL: http://www.jstor.org/stable/j.ctt5vj9pf
 
