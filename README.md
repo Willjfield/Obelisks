@@ -14,6 +14,6 @@ Sorek, Susan. The Emperors' Needles: Egyptian Obelisks and Rome. Liverpool Unive
 
 The map is powered cesium.js with a custom library of functions specific to this project called obelisks.js.
 
-geoJSON data is on a gist: https://gist.githubusercontent.com/Willjfield/140528afdc897591f3e0/raw/e20b0ee7518bddfea1d74a06ff8316fc2a40753a/obelisks51515.geojson
+geoJSON data is on a gist: https://gist.github.com/Willjfield/26f9055c6704fdbd4acf
 
 See [issues](https://github.com/Willjfield/Obelisks/issues) for features I would like to finish, if given the opportunity to develop the project beyond this semester. 
