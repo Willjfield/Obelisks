@@ -2,7 +2,7 @@
 Math.radians = function(degrees) {
   return degrees * Math.PI / 180;
 };
- 
+
 // Converts from radians to degrees.
 Math.degrees = function(radians) {
   return radians * 180 / Math.PI;
@@ -24,7 +24,7 @@ function pickDynamicObject(e) {
 //Plot the path that an obelisk has taken
 function obPath(data, obid, view, color){
   var icoords = [];
-  for (var i in data.features){ 
+  for (var i in data.features){
     if (data.features[i].properties.id == obid){
       for(var j in data.features[i].geometry.coordinates){
          icoords.push(data.features[i].geometry.coordinates[j][0]);
@@ -36,7 +36,7 @@ function obPath(data, obid, view, color){
       width : 1,
       material : color
         }
-      });   
+      });
     }
   }
 };
@@ -59,7 +59,7 @@ function obPoint(data, obid, view, color){
           }
         });
       }
-    }    
+    }
   }
 };
 //generate models for all locations of an obelisk
@@ -75,7 +75,7 @@ function createModels(data, obid, view,height,heading,scale,pitch,roll){
 
   for (var i in data.features){
     if (data.features[i].properties.id == obid){
-      for(var ex=0; ex<data.features[i].properties.exact.length;ex++){  
+      for(var ex=0; ex<data.features[i].properties.exact.length;ex++){
         if(data.features[i].properties.exact[ex]==false){
           var icoords = [];
           for(var c in data.features[i].geometry.coordinates[ex]){
@@ -108,7 +108,7 @@ function createModels(data, obid, view,height,heading,scale,pitch,roll){
       }
     }
   }
-};    
+};
 //extract the start/end date from data as an array
 function modelStartStop(data, obid, station){
   for (var i in data.features){
@@ -139,9 +139,9 @@ function movement(view, data, currTime){
         // console.log(currTime.dayNumber);
         // console.log(_startStop[1].dayNumber);
         // console.log('\n');
-      if(_startStop[1].dayNumber>currTime.dayNumber && _startStop[0].dayNumber<currTime.dayNumber){         
+      if(_startStop[1].dayNumber>currTime.dayNumber && _startStop[0].dayNumber<currTime.dayNumber){
         //console.log("Obelisk "+data.features[i].properties.id+" is now in "+data.features[i].properties.city[j]);
-       $("#timelineInfo").append("<div>Obelisk "+data.features[i].properties.id+" is now in "+data.features[i].properties.city[j]+". It was "+data.features[i].properties.means_aquired[j]+" for "+data.features[i].properties.owner[j]+", "+Math.round(((currTime.dayNumber-_startStop[0].dayNumber)/365.25))+" years ago. </div>");
+       $("#timelineInfo").append("<div>Obelisk "+data.features[i].properties.id+" is now in "+data.features[i].properties.city[j]+". It was "+data.features[i].properties.means_aquired[j]+" "+data.features[i].properties.owner[j]+", "+Math.round(((currTime.dayNumber-_startStop[0].dayNumber)/365.25))+" years ago. </div>");
       }
     }
   }
@@ -154,11 +154,11 @@ function createModel(data,view,obid,long,lat,height,heading,scale,pitch,
     heading = typeof heading !== 'undefined' ? heading :1;
     roll = typeof roll !== 'undefined' ? roll :0;
     pitch = typeof pitch !== 'undefined' ? pitch :0;
-    
+
     /* add random jitter to locations that aren't exact so they don't appear on top of each other
     for(var i in data.features){
       console.log(data.features[i]);
-      for(var ex in data.features[i].properties.exact){  
+      for(var ex in data.features[i].properties.exact){
         if(data.features[i].properties.exact[ex]==false){
             var jitter = Math.random();
               console.log(jitter);
@@ -177,7 +177,7 @@ function createModel(data,view,obid,long,lat,height,heading,scale,pitch,
         orientation : orientation,
         model : {
           scale : scale,
-            uri : url,          
+            uri : url,
         }
     });
     view.trackedEntity = entity;
@@ -190,7 +190,7 @@ function yearAquired(data, obid, city){
       for(var cit in data.features[i].properties.city){
         if(data.features[i].properties.city[cit]==city){
             console.log(data.features[i].properties.city[cit]);
-            return data.features[i].properties.year_aquired[cit]; 
+            return data.features[i].properties.year_aquired[cit];
         }
       }
     }
@@ -221,7 +221,7 @@ for (var i in data.features){
     for(var j in data.features[i].geometry.coordinates){
       var cityName = data.features[i].properties.city[j];
         var cityHeight = timeOnLocation(data,obid,cityName);
-        
+
         if(cityHeight >0 ){
           console.log(cityHeight);
            var icoords = [];
@@ -241,14 +241,14 @@ for (var i in data.features){
           });
         }
       }
-    }    
+    }
   }
 };
 //pick an object so it can be sent out of cesium
 function pickObject(entity, data){
   var obid =  parseInt(entity._properties.id);
   var step;
-  
+
   var entPos = entity._position._value;
   for(var i in data.features){
     if(data.features[i].properties.id==obid){
@@ -281,7 +281,7 @@ function pickObject(entity, data){
 //     var pic;
 
 //     //for each item in the data's "features" field
-//     for (var i in data.features){     
+//     for (var i in data.features){
 //       //look through the feature's properties and see if the id matches the obid we set
 //       if (data.features[i].properties.id == obid){
 //         cityName= data.features[i].properties.city[step];
@@ -299,16 +299,16 @@ function pickObject(entity, data){
 //       pic=data.features[i].properties.image_url[0];
 //       //console.log(pic);
 
-      
+
 //       here is how you can look at all the properties for that obelisk, inside this if statement/for loop:
-//       data.features[i].properties.origin - where the obelisk was built 
+//       data.features[i].properties.origin - where the obelisk was built
 //       data.features[i].properties.commission - who it was commissioned for
 //       data.features[i].properties.height - height
 //       data.features[i].properties.weight - weight
 //       data.features[i].properties.city[step] - an array of each city the obelisk has been in, in chronological order. Obelisk 21 went from Heliopolis to Alexandria to New York so this property is an array that equals ['Heliopolis','Alexandria','New York']
-      
+
 //       There are more properties that you can find if you look in the geojson. If you want to add more from the csv into the geojson, feel free!
-      
+
 //       //...look through each set of coordinates in that feature's geometry
 //         for(var j in data.features[i].geometry.coordinates){
 //             //create an array called icoords
@@ -318,7 +318,7 @@ function pickObject(entity, data){
 //            icoords.push(data.features[i].geometry.coordinates[j][1]);
 //            //you now have a 2 item array with one of the positions for obelisk 21, you can use it to do whatever you want like create a circle or marker
 //           }
-//         }    
+//         }
 //       }
 //       $("#step").replaceWith("<div class='city' id='step'>"+cityName+"</div>");
 //       $("#yearErected").replaceWith("<l id='yearErected'>"+year+"</l>");

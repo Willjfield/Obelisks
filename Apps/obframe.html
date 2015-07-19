@@ -166,7 +166,9 @@ var step = sessionStorage.step;
 
 
 //use jquery to store the entire geojson file as an object called "data"
-$.getJSON('https://gist.githubusercontent.com/dashalom/9871c40cd6a86918e2f4/raw/bfa10d76ddaa93c192bc446a9363c614c26ac41a/gistfile1.geojson', function(geoJ) {
+//var iframeData='https://gist.githubusercontent.com/dashalom/9871c40cd6a86918e2f4/raw/bfa10d76ddaa93c192bc446a9363c614c26ac41a/gistfile1.geojson';
+var iframeData = 'https://gist.githubusercontent.com/Willjfield/26f9055c6704fdbd4acf/raw/4cd0b8beeab863cfa87b70c887c1396a66652e18/ObeliskData.geojson';
+$.getJSON(iframeData, function(geoJ) {
 		data = geoJ;
 		//console.log(data);
 		//set the obelisk's id to 21 (this is the new york one), we can dynamically change this later but it might be easier while developing to work with one

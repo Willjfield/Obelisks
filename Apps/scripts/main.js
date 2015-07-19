@@ -1,6 +1,6 @@
 //url to geojson file
-var testURL = 'https://gist.githubusercontent.com/Willjfield/140528afdc897591f3e0/raw/46f25fb6c12e52b3b4a61b553bc8656a885913e8/obelisks51515.geojson';
-var dataURL = 'https://gist.githubusercontent.com/Willjfield/140528afdc897591f3e0/raw/e20b0ee7518bddfea1d74a06ff8316fc2a40753a/obelisks51515.geojson';
+
+var dataURL='https://gist.githubusercontent.com/Willjfield/26f9055c6704fdbd4acf/raw/4cd0b8beeab863cfa87b70c887c1396a66652e18/ObeliskData.geojson';
 //Load the data
 var enteredObs = ['17','19','20','21'];
 
